@@ -15,14 +15,11 @@ namespace NetduinoRobot
     {
         public static void Main()
         {
-            uint watchdogTimer = 200;
+            uint watchdogTimer = 1000;
 
             PWM umbrella = new PWM(Pins.GPIO_PIN_D10); //Right controller
-            PWM dispenser = new PWM(Pins.GPIO_PIN_D5); // Left Controller
-
 
             Socket receiveSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-	        //OutputPort headlights = new OutputPort(Pins.GPIO_PIN_D4, false);
             receiveSocket.Bind(new IPEndPoint(IPAddress.Any, 4444));
             byte[] rxData = new byte[10]; // Incoming data buffer
             double calibrate = 0;
@@ -43,6 +40,7 @@ namespace NetduinoRobot
                      
                     calibrate += (rxData[0] - 127.5) * .001; // Add the value of the stick to the current speed 
                     // Mediate added speed to negative if it's below center line(on ipgamepad). Make the added speed very little because the mount of UDP packets is large.
+                    // map function only accept input between 0-255
                     if (calibrate < 0)
                     {
                         calibrate = 0;
@@ -51,24 +49,16 @@ namespace NetduinoRobot
                     {
                         calibrate = 255;
                     }
-                    dispenser.SetPulse(20000, map((uint)calibrate, 0, 255, 1500, 2100)); // Right controller 1500-2100 -- only positive
+                    // Stick maintains speed unless calibrate changes.
+                    umbrella.SetPulse(20000, map((uint)calibrate, 0, 255, 1500, 2100)); // Right controller 1500-2100 -- only positive
 
-                    
-
-            
-                    //umbrella.SetPulse(
-                    //if ((uint)rxData[4] == 255)
-                    //    headlights.Write(true);
-                    //else
-                    //    headlights.Write(false);
                     watchdogTimer++;
                 }
                 else
                 {
                     // Disable the robot
-                    //leftDrive.SetDutyCycle(0);
-                    //rightDrive.SetDutyCycle(0);
-		            //headlights.Write(false);
+                    umbrella.SetDutyCycle(0);
+                    
                 }
             }
         }
