@@ -17,15 +17,15 @@ namespace NetduinoRobot
         {
             uint watchdogTimer = 200;
 
-            PWM leftDrive = new PWM(Pins.GPIO_PIN_D6);
-            PWM rightDrive = new PWM(Pins.GPIO_PIN_D9);
+            PWM umbrella = new PWM(Pins.GPIO_PIN_D10); //Right controller
+            PWM dispenser = new PWM(Pins.GPIO_PIN_D5); // Left Controller
 
-            PWM umbrella = new PWM(Pins.GPIO_PIN_D10);
 
             Socket receiveSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 	        //OutputPort headlights = new OutputPort(Pins.GPIO_PIN_D4, false);
             receiveSocket.Bind(new IPEndPoint(IPAddress.Any, 4444));
             byte[] rxData = new byte[10]; // Incoming data buffer
+            double calibrate = 0;
 
             while (true) /* Main program loop */
             {
@@ -39,8 +39,23 @@ namespace NetduinoRobot
                 if (watchdogTimer < 200)   // Only enable the robot if data was received recently
                 {
                     // 900 (full rev) to 2100 (full fwd), 1500 is neutral
-                    leftDrive.SetPulse(20000, map((uint)rxData[0], 0, 255, 900, 2100));
-                    rightDrive.SetPulse(20000, map((uint)rxData[2], 0, 255, 900, 2100));
+                    umbrella.SetPulse(20000, map((uint)rxData[2], 0, 255, 900, 2100)); // Right controller
+                     
+                    calibrate += (rxData[0] - 127.5) * .001; // Add the value of the stick to the current speed 
+                    // Mediate added speed to negative if it's below center line(on ipgamepad). Make the added speed very little because the mount of UDP packets is large.
+                    if (calibrate < 0)
+                    {
+                        calibrate = 0;
+                    }
+                    else if (calibrate > 255)
+                    {
+                        calibrate = 255;
+                    }
+                    dispenser.SetPulse(20000, map((uint)calibrate, 0, 255, 1500, 2100)); // Right controller 1500-2100 -- only positive
+
+                    
+
+            
                     //umbrella.SetPulse(
                     //if ((uint)rxData[4] == 255)
                     //    headlights.Write(true);
@@ -51,8 +66,8 @@ namespace NetduinoRobot
                 else
                 {
                     // Disable the robot
-                    leftDrive.SetDutyCycle(0);
-                    rightDrive.SetDutyCycle(0);
+                    //leftDrive.SetDutyCycle(0);
+                    //rightDrive.SetDutyCycle(0);
 		            //headlights.Write(false);
                 }
             }
