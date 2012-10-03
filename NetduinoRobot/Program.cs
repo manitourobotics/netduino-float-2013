@@ -17,11 +17,13 @@ namespace NetduinoRobot
         {
             uint watchdogTimer = 200;
 
-            PWM leftDrive = new PWM(Pins.GPIO_PIN_D5);
-            PWM rightDrive = new PWM(Pins.GPIO_PIN_D6);
+            PWM leftDrive = new PWM(Pins.GPIO_PIN_D6);
+            PWM rightDrive = new PWM(Pins.GPIO_PIN_D9);
+
+            PWM umbrella = new PWM(Pins.GPIO_PIN_D10);
 
             Socket receiveSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-	        OutputPort headlights = new OutputPort(Pins.GPIO_PIN_D4, false);
+	        //OutputPort headlights = new OutputPort(Pins.GPIO_PIN_D4, false);
             receiveSocket.Bind(new IPEndPoint(IPAddress.Any, 4444));
             byte[] rxData = new byte[10]; // Incoming data buffer
 
@@ -39,10 +41,11 @@ namespace NetduinoRobot
                     // 900 (full rev) to 2100 (full fwd), 1500 is neutral
                     leftDrive.SetPulse(20000, map((uint)rxData[0], 0, 255, 900, 2100));
                     rightDrive.SetPulse(20000, map((uint)rxData[2], 0, 255, 900, 2100));
-		            if ((uint)rxData[4] == 255)
-			            headlights.Write(true);
-		            else
-			            headlights.Write(false);
+                    //umbrella.SetPulse(
+                    //if ((uint)rxData[4] == 255)
+                    //    headlights.Write(true);
+                    //else
+                    //    headlights.Write(false);
                     watchdogTimer++;
                 }
                 else
@@ -50,7 +53,7 @@ namespace NetduinoRobot
                     // Disable the robot
                     leftDrive.SetDutyCycle(0);
                     rightDrive.SetDutyCycle(0);
-		            headlights.Write(false);
+		            //headlights.Write(false);
                 }
             }
         }

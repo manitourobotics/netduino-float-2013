@@ -28,3 +28,33 @@ C:\Users\Eric Barch\Documents\Visual Studio 2010\Projects\NetduinoRobot\Netduino
 C:\Users\Eric Barch\Documents\Visual Studio 2010\Projects\NetduinoRobot\NetduinoRobot\obj\Debug\be\NetduinoRobot.pdbx
 C:\Users\Eric Barch\Documents\Visual Studio 2010\Projects\NetduinoRobot\NetduinoRobot\obj\Debug\le\NetduinoRobot.pe
 C:\Users\Eric Barch\Documents\Visual Studio 2010\Projects\NetduinoRobot\NetduinoRobot\obj\Debug\le\NetduinoRobot.pdbx
+C:\Users\R0b0tics\netduino-float-2013\NetduinoRobot\bin\Debug\le\NetduinoRobot.exe
+C:\Users\R0b0tics\netduino-float-2013\NetduinoRobot\bin\Debug\be\NetduinoRobot.exe
+C:\Users\R0b0tics\netduino-float-2013\NetduinoRobot\bin\Debug\le\NetduinoRobot.pdb
+C:\Users\R0b0tics\netduino-float-2013\NetduinoRobot\bin\Debug\be\NetduinoRobot.pdb
+C:\Users\R0b0tics\netduino-float-2013\NetduinoRobot\bin\Debug\NetduinoRobot.exe
+C:\Users\R0b0tics\netduino-float-2013\NetduinoRobot\bin\Debug\NetduinoRobot.pdb
+C:\Users\R0b0tics\netduino-float-2013\NetduinoRobot\bin\Debug\le\NetduinoRobot.pe
+C:\Users\R0b0tics\netduino-float-2013\NetduinoRobot\bin\Debug\le\NetduinoRobot.pdbx
+C:\Users\R0b0tics\netduino-float-2013\NetduinoRobot\bin\Debug\be\NetduinoRobot.pe
+C:\Users\R0b0tics\netduino-float-2013\NetduinoRobot\bin\Debug\be\NetduinoRobot.pdbx
+C:\Users\R0b0tics\netduino-float-2013\NetduinoRobot\bin\Debug\LE\SecretLabs.NETMF.Hardware.pe
+C:\Users\R0b0tics\netduino-float-2013\NetduinoRobot\bin\Debug\LE\SecretLabs.NETMF.Hardware.NetduinoPlus.pe
+C:\Users\R0b0tics\netduino-float-2013\NetduinoRobot\bin\Debug\BE\SecretLabs.NETMF.Hardware.pe
+C:\Users\R0b0tics\netduino-float-2013\NetduinoRobot\bin\Debug\BE\SecretLabs.NETMF.Hardware.NetduinoPlus.pe
+C:\Users\R0b0tics\netduino-float-2013\NetduinoRobot\bin\Debug\LE\SecretLabs.NETMF.Hardware.pdbx
+C:\Users\R0b0tics\netduino-float-2013\NetduinoRobot\bin\Debug\LE\SecretLabs.NETMF.Hardware.NetduinoPlus.pdbx
+C:\Users\R0b0tics\netduino-float-2013\NetduinoRobot\bin\Debug\BE\SecretLabs.NETMF.Hardware.pdbx
+C:\Users\R0b0tics\netduino-float-2013\NetduinoRobot\bin\Debug\BE\SecretLabs.NETMF.Hardware.NetduinoPlus.pdbx
+C:\Users\R0b0tics\netduino-float-2013\NetduinoRobot\bin\Debug\SecretLabs.NETMF.Hardware.dll
+C:\Users\R0b0tics\netduino-float-2013\NetduinoRobot\bin\Debug\SecretLabs.NETMF.Hardware.NetduinoPlus.dll
+C:\Users\R0b0tics\netduino-float-2013\NetduinoRobot\bin\Debug\SecretLabs.NETMF.Hardware.pdb
+C:\Users\R0b0tics\netduino-float-2013\NetduinoRobot\bin\Debug\SecretLabs.NETMF.Hardware.NetduinoPlus.pdb
+C:\Users\R0b0tics\netduino-float-2013\NetduinoRobot\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\R0b0tics\netduino-float-2013\NetduinoRobot\obj\Debug\TinyCLR_DebugReferences.cache
+C:\Users\R0b0tics\netduino-float-2013\NetduinoRobot\obj\Debug\be\NetduinoRobot.pe
+C:\Users\R0b0tics\netduino-float-2013\NetduinoRobot\obj\Debug\be\NetduinoRobot.pdbx
+C:\Users\R0b0tics\netduino-float-2013\NetduinoRobot\obj\Debug\le\NetduinoRobot.pe
+C:\Users\R0b0tics\netduino-float-2013\NetduinoRobot\obj\Debug\le\NetduinoRobot.pdbx
+C:\Users\R0b0tics\netduino-float-2013\NetduinoRobot\obj\Debug\NetduinoRobot.exe
+C:\Users\R0b0tics\netduino-float-2013\NetduinoRobot\obj\Debug\NetduinoRobot.pdb
