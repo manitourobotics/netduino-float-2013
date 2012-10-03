@@ -58,7 +58,6 @@ namespace NetduinoRobot
                 {
                     // Disable the robot
                     umbrella.SetDutyCycle(0);
-                    
                 }
             }
         }
