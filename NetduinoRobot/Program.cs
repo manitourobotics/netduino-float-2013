@@ -22,7 +22,7 @@ namespace NetduinoRobot
             Socket receiveSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             receiveSocket.Bind(new IPEndPoint(IPAddress.Any, 4444));
             byte[] rxData = new byte[10]; // Incoming data buffer
-            double calibrate = 0;
+            double raw_speed = 0;
 
             while (true) /* Main program loop */
             {
@@ -36,21 +36,20 @@ namespace NetduinoRobot
                 if (watchdogTimer < 200)   // Only enable the robot if data was received recently
                 {
                     // 900 (full rev) to 2100 (full fwd), 1500 is neutral
-                    umbrella.SetPulse(20000, map((uint)rxData[2], 0, 255, 900, 2100)); // Right controller
                      
-                    calibrate += (rxData[0] - 127.5) * .001; // Add the value of the stick to the current speed 
+                    raw_speed += (rxData[0] - 127.5) * .001; // Add the value of the stick to the current speed 
                     // Mediate added speed to negative if it's below center line(on ipgamepad). Make the added speed very little because the mount of UDP packets is large.
                     // map function only accept input between 0-255
-                    if (calibrate < 0)
+                    if (raw_speed < 0)
                     {
-                        calibrate = 0;
+                        raw_speed = 0;
                     }
-                    else if (calibrate > 255)
+                    else if (raw_speed > 255)
                     {
-                        calibrate = 255;
+                        raw_speed = 255;
                     }
                     // Stick maintains speed unless calibrate changes.
-                    umbrella.SetPulse(20000, map((uint)calibrate, 0, 255, 1500, 2100)); // Right controller 1500-2100 -- only positive
+                    umbrella.SetPulse(20000, map((uint)raw_speed, 0, 255, 1500, 2100)); // Right controller 1500-2100 -- only positive
 
                     watchdogTimer++;
                 }
